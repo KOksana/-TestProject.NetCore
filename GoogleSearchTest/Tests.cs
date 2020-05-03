@@ -52,7 +52,7 @@ namespace GoogleSearchTest
 
          //   _driver.FindElement(By.XPath(SEARCH_BUTTON_XPATH)).Click();
 
-            wait.Until(drv => drv.FindElement(By.XPath(WIKI_RESULT_XPATH)));
+            wait.Until(drv => drv.FindElement(By.CssSelector(WIKI_RESULT_CSS)));
 
             _driver.FindElements(By.CssSelector(WIKI_RESULT_CSS))[0].Click();
 
