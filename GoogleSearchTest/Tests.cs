@@ -18,8 +18,9 @@ namespace GoogleSearchTest
         private const string SEARCH_BUTTON_XPATH = "//div[@class = 'tfB0Bf']//input[@class = 'gNO89b']";
         private const string SEARCH_BUTTON_CSS = "div[class = 'tfB0Bf'] input[class = 'gNO89b']";
 
-        private const string WIKI_RESULT_XPATH = "//h3[text()='XPath - Wikipedia']/../..";
-        private const string WIKI_RESULT_CSS = "div[class = 'r'] a[href $= 'wiki/XPath']";
+        private const string WIKI_RESULT_XPATH = "//*[text()='XPath - Wikipedia']/../..";
+        //private const string WIKI_RESULT_CSS = "div[class = 'r'] a[href $= 'wiki/XPath']";
+        private const string WIKI_RESULT_CSS = "a[href $= 'wiki/XPath']";
 
         private const string CONTEXT_LIST_XPATH = "//div[@id= 'toc']/ul//a";
         private const string CONTEXT_LIST_CSS = "div[id= 'toc']>ul a";
@@ -39,7 +40,7 @@ namespace GoogleSearchTest
         {
             _driver.Navigate().GoToUrl(URL);
 
-            var wait = new WebDriverWait(_driver, new TimeSpan(0, 0, 5));
+            var wait = new WebDriverWait(_driver, new TimeSpan(0, 0, 15));
             wait.Until(drv => drv.FindElement(By.XPath(SEARCH_FIELD_XPATH)));
 
             _driver.FindElement(By.CssSelector(SEARCH_FIELD_CSS)).SendKeys("xpath");
@@ -52,7 +53,7 @@ namespace GoogleSearchTest
 
          //   _driver.FindElement(By.XPath(SEARCH_BUTTON_XPATH)).Click();
 
-            wait.Until(drv => drv.FindElement(By.CssSelector(WIKI_RESULT_CSS)));
+            wait.Until(drv => drv.FindElements(By.CssSelector(WIKI_RESULT_CSS)));
 
             _driver.FindElements(By.CssSelector(WIKI_RESULT_CSS))[0].Click();
 
