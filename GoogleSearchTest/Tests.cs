@@ -55,7 +55,8 @@ namespace GoogleSearchTest
 
             wait.Until(drv => drv.FindElements(By.CssSelector(WIKI_RESULT_CSS)));
 
-            _driver.FindElements(By.CssSelector(WIKI_RESULT_CSS))[0].Click();
+
+            _driver.FindElement(By.CssSelector(WIKI_RESULT_CSS)).Click();
 
             wait.Until(drv => drv.FindElement(By.ClassName("toctitle")));
 
