@@ -48,9 +48,9 @@ namespace GoogleSearchTest
 
             var searchButton = _driver.FindElement(By.CssSelector(SEARCH_BUTTON_CSS));
             var actions = new Actions(_driver);
-            actions.MoveToElement(searchButton).Build().Perform();
+            actions.MoveToElement(searchButton).Click().Build().Perform();
 
-            _driver.FindElement(By.XPath(SEARCH_BUTTON_XPATH)).Click();
+         //   _driver.FindElement(By.XPath(SEARCH_BUTTON_XPATH)).Click();
 
             wait.Until(drv => drv.FindElement(By.XPath(WIKI_RESULT_XPATH)));
 
